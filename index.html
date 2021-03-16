@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title>千幽Chiyuu按钮</title>
+	<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.button{
+				color:#FFFFFF ;
+				text-align: center;
+				font-size: 15px;
+				height: 36px;
+				font-family:"微软雅黑";
+				background-color:#2e4668;
+				border: 2px solid #2e4668;
+				border-radius: 8px;
+				margin-top: 15px;
+				margin-bottom: 15px;
+				margin-left: 5px;
+				margin-left: 5px;
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+			.navbutton{
+				color:#FFFFFF ;
+				text-align: center;
+				font-size: 15px;
+				height: 36px;
+				font-family:"微软雅黑";
+				background-color:#2e4668;
+				border: 2px solid #2e4668;
+				border-radius: 8px;
+				margin-top: 0px;
+				margin-bottom: 0px;
+				margin-left: 0px;
+				margin-left: 0px;
+				padding-left: 0px;
+				padding-right: 0px;
+			}
+			.subTitle{
+				width: 95%;
+				height: 36px;
+				border: 2px solid #000000;
+				border-radius: 8px;
+				background-color:#cc225f;
+				margin: 2px;
+				text-align:center;
+				color:aliceblue;
+				font-family:"微软雅黑";
+				font-size: 25px;
+			}
+			.content{
+				width: 90%;
+				height: auto;
+				background-color:#8A85F5;
+			}
+			.titletext{
+				width:110px;
+				height:50px;
+				align:left;
+				font-size: 25px;
+				font-weight: 900;
+				background-color: transparent;
+				border: 0;
+				margin: 0;
+				padding-top: 0px;
+				font-family:"等线"
+			}
+			#container{
+				width: 100%;
+				align: center;
+				background:#E8E8E8;
+				height:auto; 
+			}
+			#nav{
+				position:fixed; 
+				top:0; 
+				width:100%; 
+				height: 50px; 
+				background:#EBEBEB;
+			}
+			#main{
+				width:100%;
+				height:auto;
+				margin-top:55px;
+				background:#FFFFF;
+				padding-top: 10px;
+			}
+			li{
+				display: inline-block;
+				list-style:none; 
+				padding: 0px;
+				margin: 0px;
+			}
+			</style>
+	<script>
+		function voiceControl(butID){
+			var audio = document.getElementById('music'); 
+			audio.src = "Source//" +butID + ".mp3";
+			if(audio.paused){                 
+				audio.play();//audio.play();// 播放  
+			 }
+			else{
+				 audio();
+			 } 
+		}
+		</script>
+	</head>
+
+<body>
+	<div>
+		<audio controls="controls" preload id="music"   hidden> </audio>
+		</div>
+	<div id="nav">
+		<ul id="navgation">
+			<li style="float: left">
+				
+				 <input type="button" style="background-image: url(Img/01.png);width: 50px;height: 50px;
+								background-repeat:no-repeat ;background-size:50px 50px; border: 0;
+								background-color: transparent;">
+			</li>
+			<li style="float: left;margin-left: 10px;">
+				<input class="titletext" type="text" value="千幽按钮">
+				</li>
+			<li style="float: right">
+				<input type="button" class="button" style="margin-bottom: 5px">
+				</li>
+			<li>
+				</li>
+			<li>
+				</li>
+			</ul>
+		</div>
+	<div id="main">
+		<center><div class="subTitle">
+			语气
+			</div>
+		<div>
+			<input type="button" class="button" value="生活不易，千幽叹气" onclick="voiceControl(this.id)" id="sigh">
+			<input type="button" class="button" value="阿西吧" onclick="voiceControl(this.id)" id="AhEastEight">
+			<input type="button" class="button" value="为什么" onclick="voiceControl(this.id)" id="Doshite">
+			<input type="button" class="button" value="4" onclick="voiceControl(this.id)" id="4">
+			<input type="button" class="button" value="5" onclick="voiceControl(this.id)" id="5">
+			<input type="button" class="button" value="6" onclick="voiceControl(this.id)" id="6">
+			<input type="button" class="button" value="7" onclick="voiceControl(this.id)" id="7">
+			</div>
+				
+		<div class="subTitle">
+			萌	
+			</div>
+		<div>
+			<input type="button" class="button" value="我的花花" onclick="voiceControl(this.id)" id="WTFF">
+			<input type="button" class="button" value="钉宫三连" onclick="voiceControl(this.id)" id="Kugimiya_Combo">
+			<input type="button" class="button" value="无能狂怒" onclick="voiceControl(this.id)" id="Fury">
+			<input type="button" class="button" value="Fxxk" onclick="voiceControl(this.id)" id="Fxxk">
+			<input type="button" class="button" value="FxxkU" onclick="voiceControl(this.id)" id="FxxkU">
+			<input type="button" class="button" value="z" onclick="voiceControl(this.id)" id="z">
+			<input type="button" class="button" value="x" onclick="voiceControl(this.id)" id="x">
+			</div>
+		</center>
+		</div>
+	</body>
+	</html>
