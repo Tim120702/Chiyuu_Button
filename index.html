@@ -1,105 +1,128 @@
 <!doctype html>
-<html>
-	<head>
+<html><head>
 	<meta charset="utf-8">
 	<title>千幽Chiyuu按钮</title>
 	<style type="text/css">
-			*{
-				margin: 0;
-				padding: 0;
+		*{
+			margin: 0;
+			padding: 0;			
 			}
-			.button{
-				color:#FFFFFF ;
-				text-align: center;
-				font-size: 15px;
-				height: 36px;
-				font-family:"微软雅黑";
-				background-color:#2e4668;
-				border: 2px solid #2e4668;
-				border-radius: 8px;
-				margin-top: 15px;
-				margin-bottom: 15px;
-				margin-left: 5px;
-				margin-left: 5px;
-				padding-left: 10px;
-				padding-right: 10px;
+		.button{
+			color:#FFFFFF ;
+			text-align: center;
+			font-size: 15px;
+			height: 36px;
+			font-family:"微软雅黑";
+			background-color:#2e4668;
+			border: 2px solid #2e4668;
+			border-radius: 8px;
+			margin-top: 15px;
+			margin-bottom: 15px;
+			margin-left: 3px;
+			margin-right: 3px;
+			padding-left: 10px;
+			padding-right: 10px;
 			}
-			.navbutton{
-				color:#FFFFFF ;
-				text-align: center;
-				font-size: 15px;
-				height: 36px;
-				font-family:"微软雅黑";
-				background-color:#2e4668;
-				border: 2px solid #2e4668;
-				border-radius: 8px;
-				margin-top: 0px;
-				margin-bottom: 0px;
-				margin-left: 0px;
-				margin-left: 0px;
-				padding-left: 0px;
-				padding-right: 0px;
+		.navbutton{
+			color:#FFFFFF ;
+			text-align: center;
+			font-size: 15px;
+			height: 30px;
+			width: 100px;
+			font-family:"微软雅黑";
+			background-color:#2e4668;
+			border: 2px solid #2e4668;
+			border-radius: 8px;
+			margin-top: 10px;
+			margin-bottom: 0px;
+			margin-left: 5px;
+			margin-right: 5px;
+			padding-left: 10px;
+			padding-right: 10px;
 			}
-			.subTitle{
-				width: 95%;
-				height: 36px;
-				border: 2px solid #000000;
-				border-radius: 8px;
-				background-color:#cc225f;
-				margin: 2px;
-				text-align:center;
-				color:aliceblue;
-				font-family:"微软雅黑";
-				font-size: 25px;
+		.subTitle{
+			width: 95%;
+			height: 36px;
+			border: 2px solid #000000;
+			border-radius: 8px;
+			background-color:#cc225f;
+			margin: 2px;
+			text-align:center;
+			color:aliceblue;
+			font-family:"微软雅黑";
+			font-size: 25px;
 			}
-			.content{
-				width: 90%;
-				height: auto;
-				background-color:#8A85F5;
+		.content{
+			width: 90%;
+			height: auto;
+			background-color:#8A85F5;
 			}
-			.titletext{
-				width:110px;
-				height:50px;
-				align:left;
-				font-size: 25px;
-				font-weight: 900;
-				background-color: transparent;
-				border: 0;
-				margin: 0;
-				padding-top: 0px;
-				font-family:"等线"
+		.titletext{
+			display:inline-block;
+			width:110px;
+			height:50px;
+			align:left;
+			font-size: 24px;
+			font-weight: 900;
+			background-color: transparent;
+			border: 0;
+			font-family:"等线";
+			padding-top:13px;
 			}
-			#container{
-				width: 100%;
-				align: center;
-				background:#E8E8E8;
-				height:auto; 
+		.functiontext{
+			width: 65px;
+			height:50px;
+			font-size: 15px;
+			font-weight: 600;
+			background-color: transparent;
+			border: 0;
+			font-family:"等线"
 			}
-			#nav{
-				position:fixed; 
-				top:0; 
-				width:100%; 
-				height: 50px; 
-				background:#EBEBEB;
+		#container{
+			width: 100%;
+			align: center;
+			background:#E8E8E8;
+			height:auto; 
 			}
-			#main{
-				width:100%;
-				height:auto;
-				margin-top:55px;
-				background:#FFFFF;
-				padding-top: 10px;
+		#nav{
+			position:fixed; 
+			top:0; 
+			width:100%; 
+			height: 50px; 
+			background:#EBEBEB;
 			}
-			li{
-				display: inline-block;
-				list-style:none; 
-				padding: 0px;
-				margin: 0px;
+		#main{
+			width:100%;
+			height:auto;
+			margin-top:55px;
+			background:#FFFFF;
+			padding-top: 10px;
 			}
-			</style>
+		li{
+			display: inline-block;
+			list-style:none; 
+			padding: 0px;
+			margin: 0px;
+			}
+		#Nowplay{
+			width: 400px;
+			height:50px;
+			text-align: center;
+			font-size: 13px;
+			font-weight: 400;
+			background-color: transparent;
+			border: 0;
+			font-family:"等线";	
+			margin-left: 50%;
+		}
+		</style>
 	<script>
+		var voiceName = new Array("sigh","AhEastEight","Doshite","WTFF","Kugimiya_Combo","Fury","Fxxk","FxxkU")
 		function voiceControl(butID){
 			var audio = document.getElementById('music'); 
-			audio.src = "Source//" +butID + ".mp3";
+			var source = document.getElementById('musicsrc');
+			alert("gitee.com/TimWhite/Chiyuu_Button/raw/main/Source/" +butID + ".mp3");
+			source.src = "https://gitee.com/TimWhite/Chiyuu_Button/raw/main/Source/" +butID + ".mp3";
 			if(audio.paused){                 
 				audio.play();//audio.play();// 播放  
 			 }
@@ -107,32 +130,47 @@
 				 audio();
 			 } 
 		}
+		function stop(){
+			var audio = document.getElementById('music');
+			audio.stop();
+		}
+		function randomVoice(){
+			var RandomNumber = Math.floor(Math.random()*8);
+			voiceControl(voiceName[RandomNumber]);
+		}
 		</script>
 	</head>
 
 <body>
 	<div>
-		<audio controls="controls" preload id="music"   hidden> </audio>
+		<audio controls="controls" preload id="music" hidden>
+			<source id="musicsrc" type="audio/mp3">
+			</audio>
 		</div>
 	<div id="nav">
 		<ul id="navgation">
 			<li style="float: left">
-				
-				 <input type="button" style="background-image: url(Img/01.png);width: 50px;height: 50px;
+				 <input type="button" style="background-image: url(https://gitee.com/TimWhite/Chiyuu_Button/raw/main/Img/01.png);width: 50px;height: 50px;
 								background-repeat:no-repeat ;background-size:50px 50px; border: 0;
 								background-color: transparent;">
 			</li>
 			<li style="float: left;margin-left: 10px;">
-				<input class="titletext" type="text" value="千幽按钮">
+				<span class="titletext" >千幽按钮</span>
 				</li>
 			<li style="float: right">
-				<input type="button" class="button" style="margin-bottom: 5px">
+				<input type="button" class="navbutton" value="洗脑循环">
 				</li>
-			<li>
+			<li style="float: right">
+				<input type="button" class="navbutton" value="随机一个" onclick="randomVoice()">
 				</li>
-			<li>
+			<li style="float: right">
+				<input type="button" class="navbutton" value="停止" onclick="stop()">
+				</li>
+			<li style="float: right">
+				<input type="text" class="functiontext" value="控制选项">
 				</li>
 			</ul>
+			
 		</div>
 	<div id="main">
 		<center><div class="subTitle">
@@ -147,7 +185,7 @@
 			<input type="button" class="button" value="6" onclick="voiceControl(this.id)" id="6">
 			<input type="button" class="button" value="7" onclick="voiceControl(this.id)" id="7">
 			</div>
-				
+	
 		<div class="subTitle">
 			萌	
 			</div>
