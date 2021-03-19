@@ -1,134 +1,24 @@
 <!doctype html>
-<html><head>
+<html>
+<head>
 	<meta charset="utf-8">
 	<title>千幽Chiyuu按钮</title>
-	<style type="text/css">
-		*{
-			margin: 0;
-			padding: 0;			
-			}
-		.button{
-			color:#FFFFFF ;
-			text-align: center;
-			font-size: 15px;
-			height: 36px;
-			font-family:"微软雅黑";
-			background-color:#2e4668;
-			border: 2px solid #2e4668;
-			border-radius: 8px;
-			margin-top: 15px;
-			margin-bottom: 15px;
-			margin-left: 3px;
-			margin-right: 3px;
-			padding-left: 10px;
-			padding-right: 10px;
-			}
-		.navbutton{
-			color:#FFFFFF ;
-			text-align: center;
-			font-size: 15px;
-			height: 30px;
-			width: 100px;
-			font-family:"微软雅黑";
-			background-color:#2e4668;
-			border: 2px solid #2e4668;
-			border-radius: 8px;
-			margin-top: 10px;
-			margin-bottom: 0px;
-			margin-left: 5px;
-			margin-right: 5px;
-			padding-left: 10px;
-			padding-right: 10px;
-			}
-		.subTitle{
-			width: 95%;
-			height: 36px;
-			border: 2px solid #000000;
-			border-radius: 8px;
-			background-color:#cc225f;
-			margin: 2px;
-			text-align:center;
-			color:aliceblue;
-			font-family:"微软雅黑";
-			font-size: 25px;
-			}
-		.content{
-			width: 90%;
-			height: auto;
-			background-color:#8A85F5;
-			}
-		.titletext{
-			display:inline-block;
-			width:110px;
-			height:50px;
-			align:left;
-			font-size: 24px;
-			font-weight: 900;
-			background-color: transparent;
-			border: 0;
-			font-family:"等线";
-			padding-top:13px;
-			}
-		.functiontext{
-			width: 65px;
-			height:50px;
-			font-size: 15px;
-			font-weight: 600;
-			background-color: transparent;
-			border: 0;
-			font-family:"等线"
-			}
-		#container{
-			width: 100%;
-			align: center;
-			background:#E8E8E8;
-			height:auto; 
-			}
-		#nav{
-			position:fixed; 
-			top:0; 
-			width:100%; 
-			height: 50px; 
-			background:#EBEBEB;
-			}
-		#main{
-			width:100%;
-			height:auto;
-			margin-top:55px;
-			background:#FFFFF;
-			padding-top: 10px;
-			}
-		li{
-			display: inline-block;
-			list-style:none; 
-			padding: 0px;
-			margin: 0px;
-			}
-		#Nowplay{
-			width: 400px;
-			height:50px;
-			text-align: center;
-			font-size: 13px;
-			font-weight: 400;
-			background-color: transparent;
-			border: 0;
-			font-family:"等线";	
-			margin-left: 50%;
-		}
-		</style>
+	<link rel="stylesheet" rev="stylesheet" href="style.css" type="text/css" media="all" />
 	<script>
 		var voiceName = new Array("sigh","AhEastEight","Doshite","WTFF","Kugimiya_Combo","Fury","Fxxk","FxxkU")
 		function voiceControl(butID){
 			var audio = document.getElementById('music'); 
 			var source = document.getElementById('musicsrc');
-			alert("gitee.com/TimWhite/Chiyuu_Button/raw/main/Source/" +butID + ".mp3");
-			source.src = "https://gitee.com/TimWhite/Chiyuu_Button/raw/main/Source/" +butID + ".mp3";
+			audio.src = "https://gitee.com/TimWhite/Chiyuu_Button/raw/main/Mp3/" +butID + ".mp3";
 			if(audio.paused){                 
-				audio.play();//audio.play();// 播放  
+				audio.play();
 			 }
 			else{
 				 audio();
 			 } 
+		}
+		function active{
+			
 		}
 		function stop(){
 			var audio = document.getElementById('music');
@@ -138,36 +28,53 @@
 			var RandomNumber = Math.floor(Math.random()*8);
 			voiceControl(voiceName[RandomNumber]);
 		}
+		
+		function voiceLoop(){
+			var checkbox = document.getElementById("loopControl");
+			var audio = document.getElementById('music');
+			if (checkbox.checked){
+				checkbox.checked = false;
+				audio.removeAttribute("loop");
+			}
+			else{
+				checkbox.checked = true;
+				audio.loop = "loop";
+			}
+		}
 		</script>
 	</head>
 
 <body>
 	<div>
+        <div class="hidden_box">
+			<label for="label1"></label>
+			<input type="checkbox" id="label1">
+			<div class="hidden_show">
+				<ul>
+					<li>
+						<input type="button" class="picbutton" id = "loop" onclick="voiceLoop()" style="background-image: url(Img/DoNotStop.png);">
+						</li>
+					<li>
+						<input type="button" class="picbutton" id="random" onclick="randomVoice()" style="background-image: url(Img/random.png);">
+						</li>
+					<li>
+						<input type="button" class="picbutton" id="stop" onclick="stop()" style="background-image: url(Img/stop.png);">
+						</li>
+					</ul>
+				</div>
+    		</div>
+		</div>
+	<div>
 		<audio controls="controls" preload id="music" hidden>
-			<source id="musicsrc" type="audio/mp3">
 			</audio>
 		</div>
 	<div id="nav">
 		<ul id="navgation">
 			<li style="float: left">
-				 <input type="button" style="background-image: url(https://gitee.com/TimWhite/Chiyuu_Button/raw/main/Img/01.png);width: 50px;height: 50px;
-								background-repeat:no-repeat ;background-size:50px 50px; border: 0;
-								background-color: transparent;">
-			</li>
+				 <input type="button" class="pic" style="background-image: url(https://gitee.com/TimWhite/Chiyuu_Button/raw/main/Img/01.png);">
+				</li>
 			<li style="float: left;margin-left: 10px;">
-				<span class="titletext" >千幽按钮</span>
-				</li>
-			<li style="float: right">
-				<input type="button" class="navbutton" value="洗脑循环">
-				</li>
-			<li style="float: right">
-				<input type="button" class="navbutton" value="随机一个" onclick="randomVoice()">
-				</li>
-			<li style="float: right">
-				<input type="button" class="navbutton" value="停止" onclick="stop()">
-				</li>
-			<li style="float: right">
-				<input type="text" class="functiontext" value="控制选项">
+				<span class="titletext" >幽按钮</span>
 				</li>
 			</ul>
 			

@@ -1,0 +1,88 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<title>底部菜单上弹且固定</title>
+
+<style>
+
+*{margin:0;padding:0;}
+
+body{margin:0;padding:0;background:#f3f3f3;}
+
+#slcd{
+	width:100%;
+	height:60px;
+	background:#09C;
+	position:fixed;
+	bottom:0px;}
+
+#slcd ul,#slcd ul li{height:60px;}
+
+#slcd ul li{
+	width:24.9%;
+	float:left;
+	list-style-type:none;
+	line-height:60px;
+	text-align:center;
+	overflow:hidden;
+	}
+
+#slcd ul li:hover{
+	background:#09F;
+	overflow:visible;
+	}
+
+#zcd ul,#zcd ul li{
+	width:100%;
+	height:60px;
+	background:#09C;
+	}
+
+.zcd1{margin-top:-240px;width:100%;}/*每个子菜单的上边距需要手动调整*/
+
+.zcd2{margin-top:-300px;width:100%;}
+
+.zcd3{margin-top:-300px;width:100%;}
+
+.zcd4{margin-top:-120px;width:100%;}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="slcd">
+
+  <ul>
+
+    <li>菜单1
+
+    <div id="zcd" class="zcd1">
+
+      <ul>
+
+          <li><a href="#">菜单1子菜单1</a></li>
+
+          <li><a href="#">菜单1子菜单2</a></li>
+
+          <li><a href="#">菜单1子菜单3</a></li>
+
+        </ul>
+
+      </div>
+
+    </li>
+
+  </ul>
+
+</div>
+
+</body>
+
+</html>

@@ -107,6 +107,18 @@
 				 audio();
 			 } 
 		}
+		function voiceLoop(){
+			var checkbox = document.getElementById("loopControl");
+			var audio = document.getElementById('music');
+			if (checkbox.checked){
+				checkbox.checked = false;
+				audio.removeAttribute("loop");
+			}
+			else{
+				checkbox.checked = true;
+				audio.loop = "loop";
+			}
+		}
 		</script>
 	</head>
 
@@ -126,7 +138,10 @@
 				<input class="titletext" type="text" value="千幽按钮">
 				</li>
 			<li style="float: right">
-				<input type="button" class="navbutton" value="洗脑循环">
+				<button class="navbutton" style="width: 110px" onclick="voiceLoop()">
+					<input type="checkbox" name="vehicle" value="Car" id="loopControl">
+					<span>洗脑循环</span>
+					</button>
 				</li>
 			<li style="float: right">
 				<input type="button" class="navbutton" value="洗脑循环">
