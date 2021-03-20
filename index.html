@@ -5,19 +5,19 @@
 	<title>千幽Chiyuu按钮</title>
 	<link rel="stylesheet" rev="stylesheet" href="style.css" type="text/css" media="all" />
 	<script>
-		var voiceName = new Array("sigh","AhEastEight","Doshite","WTFF","Kugimiya_Combo","Fury","Fxxk","FxxkU")
+		var voiceName = new Array("sigh","AhEastEight","Doshite","WTFF","Kugimiya_Combo","Fury","Fxxk","FxxkU");
+		
 		function voiceControl(butID){
 			var audio = document.getElementById('music'); 
-			var source = document.getElementById('musicsrc');
-			audio.src = "https://gitee.com/TimWhite/Chiyuu_Button/raw/main/Mp3/" +butID + ".mp3";
+			audio.src = "Mp3/" +butID + ".mp3";
 			if(audio.paused){                 
 				audio.play();
-			 }
+			}
 			else{
 				 audio();
-			 } 
+			} 
 		}
-		function active{
+		function active(){
 			
 		}
 		function stop(){
@@ -41,40 +41,48 @@
 				audio.loop = "loop";
 			}
 		}
+		function pageJump(URL){
+			window.location.href = URL;
+		}
 		</script>
 	</head>
 
-<body>
+<body style="background-color:antiquewhite">
 	<div>
         <div class="hidden_box">
 			<label for="label1"></label>
-			<input type="checkbox" id="label1">
+			<input type="checkbox" id="label1" title="这是一个控制器">
 			<div class="hidden_show">
 				<ul>
-					<li>
-						<input type="button" class="picbutton" id = "loop" onclick="voiceLoop()" style="background-image: url(Img/DoNotStop.png);">
+					<li class="hide">
+						<button type="button" class="picbutton" id = "loop" onclick="voiceLoop()" style="background-image: url(Img/DoNotStop.png);" title="不要停下来啊(指单曲循环)"></button>
 						</li>
-					<li>
-						<input type="button" class="picbutton" id="random" onclick="randomVoice()" style="background-image: url(Img/random.png);">
+					<li class="hide">
+						<button type="button" class="picbutton" id="random" onclick="randomVoice()" style="background-image: url(Img/random.png);" title ="随机一个音声"></button>
 						</li>
-					<li>
-						<input type="button" class="picbutton" id="stop" onclick="stop()" style="background-image: url(Img/stop.png);">
+					<li class="hide">
+						<button type="button" class="picbutton" id="stop" onclick="stop()" style="background-image: url(Img/stop.png);" title="停止播放"></button>
 						</li>
 					</ul>
 				</div>
     		</div>
 		</div>
 	<div>
-		<audio controls="controls" preload id="music" hidden>
-			</audio>
+		<audio controls="controls" preload id="music" hidden></audio>
 		</div>
 	<div id="nav">
 		<ul id="navgation">
-			<li style="float: left">
-				 <input type="button" class="pic" style="background-image: url(https://gitee.com/TimWhite/Chiyuu_Button/raw/main/Img/01.png);">
+			<li class="navg">
+				 <input type="button" class="pic" style="background-image: url(Img/flower.png);">
 				</li>
-			<li style="float: left;margin-left: 10px;">
-				<span class="titletext" >幽按钮</span>
+			<li class="navg">
+				<span class="titletext">幽按钮</span>
+				</li>
+			<li class="navg">
+				<button class="picbutton" style="background-image: url(Img/board.png); margin-left: 150%" onclick="window.location.href = 'https://space.bilibili.com/690608691'" title="千幽Chiyuu"></button>
+				</li>
+			<li class="navg">
+				<button class="picbutton" style="background-image: url(Img/erchuang.png); margin-left: 150%" onClick="window.location.href = 'https://space.bilibili.com/99075788'" title="千幽的暗黑交友部"></button>
 				</li>
 			</ul>
 			
@@ -83,20 +91,20 @@
 		<center><div class="subTitle">
 			语气
 			</div>
-		<div>
-			<input type="button" class="button" value="生活不易，千幽叹气" onclick="voiceControl(this.id)" id="sigh">
-			<input type="button" class="button" value="阿西吧" onclick="voiceControl(this.id)" id="AhEastEight">
-			<input type="button" class="button" value="为什么" onclick="voiceControl(this.id)" id="Doshite">
-			<input type="button" class="button" value="4" onclick="voiceControl(this.id)" id="4">
-			<input type="button" class="button" value="5" onclick="voiceControl(this.id)" id="5">
-			<input type="button" class="button" value="6" onclick="voiceControl(this.id)" id="6">
-			<input type="button" class="button" value="7" onclick="voiceControl(this.id)" id="7">
+		<div class="content">
+			<button class="button" onclick="voiceControl(this.id)" id="sigh">生活不易，千幽叹气</button>
+			<button class="button" onclick="voiceControl(this.id)" id="AhEastEight">阿西吧</button>
+			<button class="button" onclick="voiceControl(this.id)" id="Doshite">为什么</button>
+			<button class="button" value="4" onclick="voiceControl(this.id)" id="4">1</button>
+			<button class="button" value="5" onclick="voiceControl(this.id)" id="5">2</button>
+			<button class="button" value="6" onclick="voiceControl(this.id)" id="6">3</button>
+			<button class="button" value="7" onclick="voiceControl(this.id)" id="7">4</button>
 			</div>
 	
 		<div class="subTitle">
 			萌	
 			</div>
-		<div>
+		<div class="content">
 			<input type="button" class="button" value="我的花花" onclick="voiceControl(this.id)" id="WTFF">
 			<input type="button" class="button" value="钉宫三连" onclick="voiceControl(this.id)" id="Kugimiya_Combo">
 			<input type="button" class="button" value="无能狂怒" onclick="voiceControl(this.id)" id="Fury">
