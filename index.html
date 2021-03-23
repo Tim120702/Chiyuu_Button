@@ -9,7 +9,7 @@
 		
 		function voiceControl(butID){
 			var audio = document.getElementById("music"); 
-			audio.src = "Mp3/" +butID + ".mp3";
+			audio.src = "SpiritSound/" +butID + ".mp3";
 			if(audio.paused){                 
 				audio.play();
 			}
@@ -78,14 +78,14 @@
 				</li>
 			<li class="navg">
 				<button class="picbutton" style="width: 132px; margin-left: 10px; border-radius: 10px;" onclick="window.location.href = 'https://space.bilibili.com/690608691'" title="千幽Chiyuu">
-					<li style="float: left;margin-left: 5px" ><img src="Img/board.png" style="width: 32px;height: 32px" alt="菜板.jpg"></li>
+					<li style="float: left;margin-left: 5px" ><img src="Img/board.png" style="width: 32px;height: 32px" alt="??"></li>
 					<li style="float: left;padding-top: 8px"><span style="font-size: 16px; font-family: '等线'; font-weight: 500;color: aliceblue">千幽Chiyuu</span></li>
 					</button>
 				</li>
 			<li class="navg">
 				<button class="picbutton" style="width: 180px; margin-left: 5px; border-radius: 10px;" onClick="window.location.href = 'https://space.bilibili.com/99075788'" title="千幽的暗黑交友部">
-				<li style="float: left;margin-left: 5px" ><img src="Img/erchuang.png" style="width: 32px;height: 32px" alt="菜板.jpg"></li>
-					<li style="float: left;padding-top: 8px"><span style="font-size: 16px; font-family: '等线'; font-weight: 500;color: aliceblue">千幽的暗黑交友部</span></li>
+				<li style="float: left;margin-left: 5px" ><img src="Img/erchuang.png" style="width: 32px;height: 32px" alt="??"></li>
+				<li style="float: left;padding-top: 8px"><span style="font-size: 16px; font-family: '等线'; font-weight: 500;color: aliceblue">千幽的暗黑交友部</span></li>
 				</button>
 				</li>
 			</ul>
@@ -95,10 +95,10 @@
 		<center>
 			<div>
 			<div class="subTitle">
-				<span>歌</span>
+				<span>幽歌</span>
 					<div class="content">
-					<button class="button" onclick="voiceControl(this.id)" id="twinklenight">Twinkle Night</button>
-					<button class="button" onclick="voiceControl(this.id)" id="timebox">时光盲盒</button>
+					<button class="button" onclick="voiceControl(this.id)" id="幽歌/twinklenight">Twinkle Night</button>
+					<button class="button" onclick="voiceControl(this.id)" id="幽歌/timebox">时光盲盒</button>
 					</div>
 				</div>
 			</div>
@@ -108,11 +108,8 @@
 				<div class="content">
 				<button class="button" onclick="voiceControl(this.id)" id="sigh">生活不易，千幽叹气</button>
 				<button class="button" onclick="voiceControl(this.id)" id="AhEastEight">阿西吧</button>
-				<button class="button" onclick="voiceControl(this.id)" id="Doshite">为什么</button>
-				<button class="button" value="4" onclick="voiceControl(this.id)" id="4">1</button>
-				<button class="button" value="5" onclick="voiceControl(this.id)" id="5">2</button>
-				<button class="button" value="6" onclick="voiceControl(this.id)" id="6">3</button>
-				<button class="button" value="7" onclick="voiceControl(this.id)" id="7">4</button>
+				<button class="button" onclick="voiceControl(this.id)" id="Doshite">千幽疑问</button>
+					<button class="button" onclick="voiceControl(this.id)" id="neeeeee">neeeeee</button>	
 				</div>
 				</div>
 			
@@ -121,20 +118,41 @@
 			<div class="subTitle">
 				<span style="margin: 5px;">萌</span>
 				<div class="content">
-				<button class="button" onclick="voiceControl(this.id)" id="WTFF">我的花花</button>
-				<button class="button" onclick="voiceControl(this.id)" id="Kugimiya_Combo">钉宫三连</button>
-				<button class="button" onclick="voiceControl(this.id)" id="Fury">无能狂怒</button>
-				<button class="button" onclick="voiceControl(this.id)" id="Fxxk">Fxxk</button>
-				<button class="button" onclick="voiceControl(this.id)" id="FxxkU">FxxkU</button>
-				<button class="button" onclick="voiceControl(this.id)" id="z">z</button>
-				<button class="button" onclick="voiceControl(this.id)" id="x">x</button>
+					<button class="button" onclick="voiceControl(this.id)" id="WTFF">我的花花</button>
+					<button class="button" onclick="voiceControl(this.id)" id="Kugimiya_Combo">钉宫三连(愤怒ver)</button>
+					<button class="button" onclick="voiceControl(this.id)" id="Kugimiya_chagrin">钉宫三连(委屈ver)</button>
+					<button class="button" onclick="voiceControl(this.id)" id="Fury">无能狂怒</button>
+					<button class="button" onclick="voiceControl(this.id)" id="Fxxk">Fxxk</button>
+					<button class="button" onclick="voiceControl(this.id)" id="FxxkU">FxxkU</button>
+					<button class="button" onclick="voiceControl(this.id)" id="bakax3">Baka×3</button>
+					<button class="button" onclick="voiceControl(this.id)" id="DiedGhost">死鬼~</button>
+					<button class="button" onclick="voiceControl(this.id)" id="Stretch">千幽伸懒腰</button>
+					</div>
 				</div>
-				</div>
-			
 			</div>
-			<div class="copyright">
-				
+			<div>
+			<div class="subTitle">
+				<span style="margin: 5px;">草</span>
+				<div class="content">
+					<button class="button" onclick="voiceControl(this.id)" id="ChiyuuHender">我是千幽亨德尔</button>
+					<button class="button" onclick="voiceControl(this.id)" id="baka">Baka×3</button>
+					<button class="button" onclick="voiceControl(this.id)" id="RUA">RUA</button>
+					<button class="button" onclick="voiceControl(this.id)" id="Duixian">你瞧不起谁哪</button>
+					<button class="button" onclick="voiceControl(this.id)" id="Goodnight" title="左右横跳注意">千幽の晚安</button>
+					</div>
 				</div>
+			</div>
+			<footer class="footer">
+				<div>
+					<ul>
+						<li><a herf="">© TimWhite</a> </li>
+						<li> &nbsp;&nbsp;&&nbsp;&nbsp; </li>
+						<li><a href="https://space.bilibili.com/690608691" target="_blank">千幽Chiyuu</a></li>
+						<li></li>
+						</ul>
+					<p>Contact information: <a href="mailto:someone@example.com">someone@example.com</a>.</p>
+					</div>
+				</footer>
 		</center>
 		</div>
 	</body>

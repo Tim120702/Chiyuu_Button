@@ -117,7 +117,7 @@ div .subTitle:hover{
 	margin:0;
 	padding:0;
 	position:fixed; 
-	top:4px;
+	top:5px;
 	right:5px;
 	}
 .hidden_box label{
@@ -194,3 +194,9 @@ ul .hide{
 	font-family:"等线";	
 	margin-left: 50%;
 	}
+
+.footer div{
+	text-align: left;
+	background-color:aliceblue;
+}
+.footer div ul li{float: left;}
