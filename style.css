@@ -1,16 +1,24 @@
 @charset "utf-8";
 /* CSS Document */
+@font-face{
+	font-family: "等线";
+	src: url("font/Deng.ttf")
+	}
+@font-face{
+	font-family: "YaHei_Consolas_Hybrid";
+	src: url(font/YaHei_Consolas_Hybrid.ttf)
+	}
 *{
 	margin: 0;
 	padding: 0;	
-	overflow:hidden;
+	font-family: Consolas;
 	}
 .button{
 	color:#FFFFFF ;
 	text-align: center;
 	font-size: 16px;
 	height: 40px;
-	font-family:"微软雅黑";
+	font-family:"YaHei_Consolas_Hybrid";
 	background-color:#CC225f;
 	border: 2px solid #CC225f;
 	border-radius: 8px;
@@ -20,34 +28,26 @@
 	margin-right: 3px;
 	padding-left: 10px;
 	padding-right: 10px;
-	letter-spacing: 2px;
+	letter-spacing: 1px;
 	}
-.navg{
-	float: left;
-	margin-left: 5px; 
-	margin-right: 5px;
-	}
-.navg button:hover{
-	transition: 0.4s;
-	background-color: #CC225F;
-	border: 2px solid #CC225f;
-	box-shadow:  1px 1px 2px 1px darkgrey;
-	}
+
 .subTitle{
 	width: 85%;
 	height: auto;
 	border-radius: 8px;
 	background-color:#FFFFFC;
+	margin:auto;
 	margin-top: 4px;
 	margin-bottom: 4px;
 	padding-top: 10px;
 	text-align:center;
 	color:#2e4668;
-	font-family:"微软雅黑";
+	font-family:"等线";
 	font-size: 25px;
-	font-weight: 1000;
+	font-weight: 800;
 	box-shadow:  1px 1px 1px 1px darkgrey;
 	letter-spacing:5px;
+	align-self:center;
 	}
 div .subTitle:hover{
 	transition: 0.3s;
@@ -169,6 +169,7 @@ div .subTitle:hover{
 	width:100%; 
 	height: 48px; 
 	background:transparent;
+	overflow:hidden;
 	}
 #main{
 	width:100%;
@@ -195,8 +196,32 @@ ul .hide{
 	margin-left: 50%;
 	}
 
+.footer{margin-top:5px;}
 .footer div{
 	text-align: left;
 	background-color:aliceblue;
 }
 .footer div ul li{float: left;}
+
+.navg{
+	float: left;
+	margin-left: 5px; 
+	margin-right: 5px;
+	}
+.navg a button li{
+	float: left;
+	margin-left: 2px;
+	}
+.navg a button li span{
+	font-size: 16px; 
+	font-family: 'YaHei_Consolas_Hybrid'; 
+	font-weight: 500;
+	color: aliceblue;
+}
+.navg a button:hover{
+	transition: 0.4s;
+	background-color: #CC225F;
+	border: 2px solid #CC225f;
+	box-shadow:  1px 1px 2px 1px darkgrey;
+	}
+
