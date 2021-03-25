@@ -9,6 +9,9 @@
 		
 		function voiceControl(butID){
 			var audio = document.getElementById("music"); 
+			var button = document.getElementById(butID);
+			var songname = document.getElementById("songName");
+			var content = "Null";
 			audio.src = "SpiritSound/" +butID + ".mp3";
 			if(audio.paused){                 
 				audio.play();
@@ -16,6 +19,7 @@
 			else{
 				 audio();
 			} 
+			songname.innerHTML = "现在播放：" + button.innerHTML;
 		}
 		function eleStateColor(Element,eleColor){
 			var element = document.getElementById(Element);
@@ -24,7 +28,9 @@
 		}
 		function voiceStop(){
 			var audio = document.getElementById("music");
+			var songname = document.getElementById("songName");
 			audio.src="";
+			songname.innerHTML = "";
 		}
 		function randomVoice(){
 			var RandomNumber = Math.floor(Math.random()*8);
@@ -41,6 +47,11 @@
 				audio.loop = true;
 				eleStateColor("loop","#CC255F");
 			}
+		}
+		
+		function resetName(){
+			var songname = document.getElementById("songName");
+			songname.innerHTML = "";
 		}
 		</script>
 	</head>
@@ -66,7 +77,7 @@
     		</div>
 		</div>
 	<div>
-		<audio controls="controls" preload id="music" hidden></audio>
+		<audio controls="controls" preload id="music" hidden onPause="resetName()"></audio>
 		</div>
 	<div id="nav">
 		<ul id="navgation">
@@ -145,28 +156,25 @@
 				</div>		
 		</div>
 	
-	<div>
-		
+	<div class="bottomsign" style=" align-content: center; margin: auto; padding: auto">
+		<p id="songName"></p>
 		</div>
 			
-	<footer class="footer">
+	<footer class="footer" style="margin-top: 48px">
 		<div>
 			<ul>
-				<li>©</li>
-				<li><a herf="https://github.com/Tim120702" target="_blank">TimWhite</a> </li>
-				<li> &nbsp;&&nbsp; </li>
-				<li><a href="https://space.bilibili.com/690608691" target="_blank">千幽Chiyuu</a></li>
-				<li></li>
-				</ul>
-			<br>
-			<ul>
-				<li>项目仓库: </li>
-				<li>
-					<a href="https://github.com/Tim120702/Chiyuu_Button" target="_blank">
-						<input type="button" class="picbutton" style="background-image: url(Img/github.png);background-color: transparent;border-color: transparent">
+				<li style="font-size: 20px; padding-top: 6px">©</li>
+				<li style="font-size: 20px; padding-top: 6px"><a herf="https://github.com/Tim120702" target="_blank">TimWhite</a> </li>
+					<a href="https://github.com/Tim120702/Chiyuu_Button" target="_blank" style="margin-left: 5px; width:24px;height:24px;">
+						<input type="button" class="picbutton" style="background-image: url(Img/github.png);background-color: transparent;border-color: transparent;width:24px;height:24px;">
 						</a>
-					</li>
 				</ul>
+			<p style="font-size: 16px;">本站为爱好者作品，和VirtuaReal官方没有关联。</p>
+			<p style="font-size: 16px;">上传的音频文件若有侵犯您的权益，请点此联系我们删除
+				<a href="https://github.com/Tim120702/Chiyuu_Button/issues" target="_blank" style=" width:24px; height:24px;">
+					<input type="button" class="picbutton" style="background-image: url(Img/issue.png);background-color: transparent;border-color: transparent;width:24px;height:24px;">
+					</a>
+				</p>
 			</div>
 		</footer>
 		

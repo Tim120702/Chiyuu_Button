@@ -37,8 +37,8 @@
 	border-radius: 8px;
 	background-color:#FFFFFC;
 	margin:auto;
-	margin-top: 4px;
-	margin-bottom: 4px;
+	margin-top: 5px;
+	margin-bottom: 8px;
 	padding-top: 10px;
 	text-align:center;
 	color:#2e4668;
@@ -50,7 +50,7 @@
 	align-self:center;
 	}
 div .subTitle:hover{
-	transition: 0.3s;
+	transition: 0.5s;
 	box-shadow:  2px 2px 2px 1px darkgrey;
 	}
 .content{
@@ -196,7 +196,7 @@ ul .hide{
 	margin-left: 50%;
 	}
 
-.footer{margin-top:5px;}
+.footer{margin-top: 5px;}
 .footer div{
 	text-align: left;
 	background-color:aliceblue;
@@ -225,3 +225,20 @@ ul .hide{
 	box-shadow:  1px 1px 2px 1px darkgrey;
 	}
 
+
+.bottomsign{
+	width:100%; 
+	height: 32px; 
+	position: fixed;
+	margin-bottom: 0px;
+	background-color:rgba(244,189,208,0.3); 
+    background: #F4BDD0\9;  
+    filter: alpha(opacity=30);
+	overflow:hidden;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "YaHei_Consolas_Hybrid";
+	font-size: 18px;
+	padding-top: 6px;
+	color: #5B5B5B
+	}
