@@ -6,23 +6,58 @@
 	<link rel="stylesheet" rev="stylesheet" href="style.css" type="text/css" media="all" />
 	<script>
 		var voiceName = new Array("sigh","AhEastEight","Doshite","WTFF","Kugimiya_Combo","Fury","Fxxk","FxxkU");
-		
-		function voiceControl(butID){
-			var audio = document.getElementById("music"); 
-			var button = document.getElementById(butID);
+		var keyPressed = false;
+		var song = false;
+		var keynum ;
+		var eleID = "";
+		var HDActive = false;
+		function playesound(){
+			var button = document.getElementById(eleID)
+			var audio = document.getElementById("music");
 			var songname = document.getElementById("songName");
-			var content = "Null";
-			audio.src = "SpiritSound/" +butID + ".mp3";
 			if(audio.paused){                 
 				audio.play();
 			}
 			else{
-				 audio();
+				audio();
 			} 
 			songname.innerHTML = "现在播放：" + button.innerHTML;
 		}
-		function eleStateColor(Element,eleColor){
-			var element = document.getElementById(Element);
+		function changeURL(){
+			var audio = document.getElementById("music"); 
+			if (HDActive){
+				if(song){audio.src = "SpiritSound/" +eleID + "_HD.ogg";}
+			}
+			else{
+				audio.src = "SpiritSound/" +eleID + ".mp3";
+			}
+		}
+		function voiceControl(butID){
+			eleID = butID;
+			song = false;
+			changeURL();
+			playesound();
+		}
+		
+		function songControl(butID){
+			eleID = butID;
+			song = true;
+			changeURL();
+			playesound();
+		}
+		
+		function switchHD(){
+			if (HDActive){
+				HDActive = false;
+				eleStateColor("HD","#E8779F");
+			}
+			else{
+				HDActive = true;
+				eleStateColor("HD","#cc225f");
+			}
+		}
+		function eleStateColor(ElementID,eleColor){
+			var element = document.getElementById(ElementID);
 			element.style.borderColor=eleColor;
 			element.style.backgroundColor=eleColor;
 		}
@@ -53,14 +88,37 @@
 			var songname = document.getElementById("songName");
 			songname.innerHTML = "";
 		}
+		
+		function onKeyDown(){
+			/*
+			var song = new Array("Twinkle Night","时光盲盒");
+			var avNum = new Array("av415615815","av799211017")
+			var name = document.getElementById(butID).innerHTML;
+			if(event.keyCode == 17){
+				for (var i = 0; i < song.length;i++){
+					if(name == song){
+							keyPressed = true;
+							TarURL = "https://www.bilibili.com/video/" + avNum[i];
+						}
+				}
+			}
+			*/
+			keyPressed = true;
+			keynum = event.which;
+		}
+		
+		function onKeyUp(){
+			keyPressed = false;
+			keynum = 0;
+		}
 		</script>
 	</head>
 
 <body style="background-color:#F9EFF5">
 	<div>
-        <div class="hidden_box">
+        <div class="hidden_box" title="这是一个安静的控制器">
 			<label for="label1"></label>
-			<input type="checkbox" id="label1" title="这是一个安静的控制器">
+			<input type="checkbox" id="label1" >
 			<div class="hidden_show">
 				<ul>
 					<li class="hide">
@@ -109,9 +167,20 @@
 			<div>
 				<div class="subTitle">
 					<span>幽歌</span>
+					<span class="msghide_box" style="" title="隐藏功能 ; )">
+						<label for="label2"></label>
+						<input type="checkbox" id="label2" >
+							<div class="hidden_show">
+								<ul>
+									<li class="subTitle_innerbox">选中下面按钮可以倾听高清版幽歌(会消耗较多流量) </li>
+									<li>
+										<button class="button" style="margin=0px;background-color: #E8779F;" onclick="switchHD()" id="HD">高清幽歌</button></li>
+								</ul>
+								</div>
+						</span>
 					<div class="content">
-						<button class="button" onclick="voiceControl(this.id)" id="幽歌/twinklenight">Twinkle Night</button>
-						<button class="button" onclick="voiceControl(this.id)" id="幽歌/timebox">时光盲盒</button>
+						<button class="button" onclick="songControl(this.id)" id="幽歌/twinklenight">Twinkle Night</button>
+						<button class="button" onclick="songControl(this.id)" id="幽歌/timebox">时光盲盒</button>
 						</div>
 					</div>
 				</div>
@@ -136,9 +205,13 @@
 						<button class="button" onclick="voiceControl(this.id)" id="Fury">无能狂怒</button>
 						<button class="button" onclick="voiceControl(this.id)" id="Fxxk">Fxxk</button>
 						<button class="button" onclick="voiceControl(this.id)" id="FxxkU">FxxkU</button>
-						<button class="button" onclick="voiceControl(this.id)" id="bakax3">Baka×3</button>
+						<button class="button" onclick="voiceControl(this.id)" id="baka">Baka×3</button>
 						<button class="button" onclick="voiceControl(this.id)" id="DiedGhost">死鬼~</button>
 						<button class="button" onclick="voiceControl(this.id)" id="Stretch">千幽伸懒腰</button>
+						<button class="button" onclick="voiceControl(this.id)" id="sneeze1">喷嚏1</button>
+						<button class="button" onclick="voiceControl(this.id)" id="sneeze2">喷嚏2</button>
+						<button class="button" onclick="voiceControl(this.id)" id="阳间人是大笨蛋">阳间人是大笨蛋</button>
+						<button class="button" onclick="voiceControl(this.id)" id="哼哈">哼哈~</button>
 						</div>
 					</div>
 				</div>
@@ -147,10 +220,11 @@
 					<span style="margin: 5px;">草</span>
 					<div class="content">
 						<button class="button" onclick="voiceControl(this.id)" id="ChiyuuHender">我是千幽亨德尔</button>
-						<button class="button" onclick="voiceControl(this.id)" id="baka">Baka×3</button>
+						<button class="button" onclick="voiceControl(this.id)" id="bakax3">Baka×3</button>
 						<button class="button" onclick="voiceControl(this.id)" id="RUA">RUA</button>
 						<button class="button" onclick="voiceControl(this.id)" id="Duixian">你瞧不起谁哪</button>
 						<button class="button" onclick="voiceControl(this.id)" id="Goodnight" title="左右横跳注意">千幽の晚安</button>
+						
 						</div>
 					</div>
 				</div>		
@@ -160,7 +234,7 @@
 		<p id="songName"></p>
 		</div>
 			
-	<footer class="footer" style="margin-top: 48px">
+	<footer class="footer">
 		<div>
 			<ul>
 				<li style="font-size: 20px; padding-top: 6px">©</li>
@@ -169,6 +243,7 @@
 						<input type="button" class="picbutton" style="background-image: url(Img/github.png);background-color: transparent;border-color: transparent;width:24px;height:24px;">
 						</a>
 				</ul>
+			<br>
 			<p style="font-size: 16px;">本站为爱好者作品，和VirtuaReal官方没有关联。</p>
 			<p style="font-size: 16px;">上传的音频文件若有侵犯您的权益，请点此联系我们删除
 				<a href="https://github.com/Tim120702/Chiyuu_Button/issues" target="_blank" style=" width:24px; height:24px;">

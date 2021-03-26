@@ -36,29 +36,43 @@
 	height: auto;
 	border-radius: 8px;
 	background-color:#FFFFFC;
-	margin:auto;
-	margin-top: 5px;
-	margin-bottom: 8px;
+	margin: 5px auto 8px;
 	padding-top: 10px;
 	text-align:center;
 	color:#2e4668;
-	font-family:"等线";
+	font-family:"YaHei_Consolas_Hybrid";
 	font-size: 25px;
 	font-weight: 800;
 	box-shadow:  1px 1px 1px 1px darkgrey;
 	letter-spacing:5px;
-	align-self:center;
+	align-content:center;
+	}
+.subTitle span input div ul{
+	width: auto;
+	height: auto;
+	border-radius: 8px;
+	background-color:transparent;
+	margin: 5px auto 8px;
+	text-align:center;
+	box-shadow:  1px 1px 1px 1px darkgrey;
+	}
+.subTitle_innerbox{
+	color:black;
+	font-family:"YaHei_Consolas_Hybrid";
+	font-size: 16px;
+	font-weight: 400;
+	letter-spacing:0px;
+	align-content:center;
 	}
 div .subTitle:hover{
 	transition: 0.5s;
 	box-shadow:  2px 2px 2px 1px darkgrey;
 	}
 .content{
-	width: 100%;
+	width: 90%;
 	height: auto;
 	background-color: transparent;
-	margin-top:6px;
-	margin-bottom: 6px;
+	margin: 6px auto;
 	}
 .content button:hover{
 	transition: 0.4s;
@@ -196,7 +210,9 @@ ul .hide{
 	margin-left: 50%;
 	}
 
-.footer{margin-top: 5px;}
+.footer{
+	position: static;
+	bottom: 0px;}
 .footer div{
 	text-align: left;
 	background-color:aliceblue;
@@ -229,8 +245,8 @@ ul .hide{
 .bottomsign{
 	width:100%; 
 	height: 32px; 
-	position: fixed;
-	margin-bottom: 0px;
+	position: sticky;
+	bottom: 0px;
 	background-color:rgba(244,189,208,0.3); 
     background: #F4BDD0\9;  
     filter: alpha(opacity=30);
@@ -241,4 +257,36 @@ ul .hide{
 	font-size: 18px;
 	padding-top: 6px;
 	color: #5B5B5B
+	}
+
+.msghide_box{
+	margin: 0px auto;
+}
+.msghide_box label:hover{
+	transition: 0.2s;
+	box-shadow:  0.8px 0.8px 1px 0.5px darkgrey;
+	} 
+.msghide_box label{
+	cursor :pointer;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-repeat:no-repeat;
+	background-size:100%; 
+	background-color: transparent;
+	background-image: url("Img/warning.png");
+	}
+
+.msghide_box input{display: none;}
+.msghide_box .hidden_show{
+	height: 0;
+	padding: 0;
+	overflow: hidden;
+	opacity: 0;
+	transition: 0.5s;
+	}
+.msghide_box input:checked ~ .hidden_show{
+	padding: 10px 0;
+	height: auto;
+	opacity: 1;
 	}
