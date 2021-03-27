@@ -114,10 +114,14 @@ div .subTitle:hover{
 	border-radius: 50%;
 	background-repeat:no-repeat ;
 	background-size:100%; 
-	border: 2px solid #E8779F;
+	border: 0px solid #E8779F;
 	background-color: #E8779F;
 	margin-top: 4px;
 	}
+.hide button:hover{
+	transition: 0.4s;
+	box-shadow:  1px 1px 2px 1px darkgrey;
+	} 
 
 .bottom{
 	position:fixed; 
