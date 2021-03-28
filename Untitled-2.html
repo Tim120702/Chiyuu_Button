@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        var openFile = function(event) {
+            var input = event.target;
+            var reader = new FileReader();
+            reader.onload = function() {
+                if(reader.result) {
+                    //显示文件内容
+                    $("#output").html(reader.result);
+                }
+            };
+            reader.readAsText(input.files[0]);
+        };
+		
+		
+function upload() {
+ 	var fileinput = document.getElementById(field);
+	if (window.FileReader) {
+		var file = fileinput.files[0];
+		filename = file.name.split(".")[0];
+		var reader = new FileReader();
+		reader.onload = function() {
+			$("#output").html(reader.result);
+		}
+	} 
+	else { 
+		alert('error'); 
+	} 
+ 
+
+    </script>
+
+</head>
+
+<body onload="fileRead()">
+	<input type="button" onclick="upload()" value="123456"><br>
+	
+	<input type="file" id = "field" files="Songlist.txt" hidden>
+    <div id="output"></div>
+</body>
+
+</html>

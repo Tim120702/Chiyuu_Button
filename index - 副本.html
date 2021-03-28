@@ -25,18 +25,19 @@
 			else{
 				audiosrc = "SpiritSound/" +eleID + ".mp3";
 			}
-			audio.src = audiosrc;
-			if(audio.paused){                 
-				audio.play();
+			if (multi){
+				multiplayer(audiosrc,countaudio);
+				countaudio = countaudio + 1;
 			}
 			else{
-				if (multi == true){
-					multiplayer(audiosrc);
+				audio.src = audiosrc;
+				if(audio.paused){                 
+					audio.play();
 				}
 				else{
 					audio();
-				}
-			} 
+				} 
+			}
 			songname.innerHTML = "现在播放：" + button.innerHTML;
 		}
 		
@@ -70,8 +71,18 @@
 		function voiceStop(){
 			var audio = document.getElementById("music");
 			var songname = document.getElementById("songName");
+			var multiplayer ;
+			var playerID;
 			audio.src="";
 			songname.innerHTML = "";
+			if (multi){
+				for(var i = 0;i < countaudio; i++){
+					playerID = "soundplayer" + i;
+					multiplayer = document.getElementById(playerID);
+					multiplayer.src = "";
+				}
+				countaudio = 0;
+			}
 		}
 		function randomVoice(){
 			var RandomNumber = Math.floor(Math.random()*8);
@@ -95,9 +106,10 @@
 			songname.innerHTML = "";
 		}
 		
-		function multiplayer(src)
+		function multiplayer(src, playerNum)
 		{
 			var audio = new Audio()
+			audio.id = "soundplayer" + playerNum;
 			audio.controls = true;
 			audio.preload = true;
 			audio.hidden = true;
@@ -234,9 +246,9 @@
 			<ul>
 				<li style="font-size: 20px; padding-top: 6px">©</li>
 				<li style="font-size: 20px; padding-top: 6px"><a herf="https://github.com/Tim120702" target="_blank">TimWhite</a> </li>
-					<a href="https://github.com/Tim120702/Chiyuu_Button" target="_blank" style="margin-left: 5px; width:24px;height:24px;">
-						<input type="button" class="picbutton" style="background-image: url(Img/github.png);background-color: transparent;border-color: transparent;width:24px;height:24px;">
-						</a>
+				<a href="https://github.com/Tim120702/Chiyuu_Button" target="_blank" style="margin-left: 5px; width:24px;height:24px;">
+					<input type="button" class="picbutton" style="background-image: url(Img/github.png);background-color: transparent;border-color: transparent;width:24px;height:24px;">
+					</a>
 				</ul>
 			<br>
 			<p style="font-size: 16px;">本站为爱好者作品，和VirtuaReal官方没有关联。</p>
