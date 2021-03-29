@@ -8,7 +8,8 @@
 
 gitee上也有一个镜像库 https://gitee.com/TimWhite/Chiyuu_Button
 
-千幽按钮网页 https://tim120702.github.io/Chiyuu_Button/
+千幽按钮网页-github https://tim120702.github.io/Chiyuu_Button/
+千幽按钮网页-gitee  https://timwhite.gitee.io/chiyuu_button/
 
 暂时还没买域名orz 
-（时间紧没用markdown 之后再改吧）
+
