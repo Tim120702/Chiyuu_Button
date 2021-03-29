@@ -14,4 +14,4 @@ gitee上也有一个镜像库 https://gitee.com/TimWhite/Chiyuu_Button
 暂时还没买域名orz   
 
 
-![img][https://github.com/Tim120702/Chiyuu_Button/blob/main/%E7%B4%A0%E6%9D%90/css.jpg?raw=true]
+![](https://github.com/Tim120702/Chiyuu_Button/blob/main/%E7%B4%A0%E6%9D%90/css.jpg?raw=true)
