@@ -90,7 +90,7 @@ div .subTitle:hover{
 	background-color: transparent;
 	border: 0;
 	font-family:"等线";
-	padding-top:13px;
+	padding-top:20px;
 	}
 .functiontext{
 	width: 65px;
@@ -108,6 +108,7 @@ div .subTitle:hover{
 	background-size:48px 48px; 
 	border: 0;
 	background-color: transparent;
+	margin-top: 5px;
 	}
 .picbutton{
 	width: 40px;
@@ -116,7 +117,7 @@ div .subTitle:hover{
 	background-repeat:no-repeat ;
 	background-size:100%; 
 	background-color: #E8779F;
-	margin-top: 4px;
+	margin-top: 10px;
 	}
 .hide button:hover{
 	transition: 0.4s;
@@ -135,8 +136,8 @@ div .subTitle:hover{
 	margin:0;
 	padding:0;
 	position:fixed; 
-	top:5px;
-	right:5px;
+	top:10px;
+	right:10px;
 	}
 .hidden_box label{
 	cursor :pointer;
@@ -185,7 +186,7 @@ div .subTitle:hover{
 	}
 #nav{
 	width:100%; 
-	height: 48px; 
+	height: 56px; 
 	background:transparent;
 	overflow:hidden;
 	}
