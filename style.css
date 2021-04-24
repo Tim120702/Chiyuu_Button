@@ -117,6 +117,7 @@ div .subTitle:hover{
 	background-repeat:no-repeat ;
 	background-size:100%; 
 	background-color: #E8779F;
+	border: 0px transparent solid;
 	margin-top: 10px;
 	}
 .hide button:hover{
@@ -242,7 +243,7 @@ ul .hide{
 .navg a button:hover{
 	transition: 0.4s;
 	background-color: #CC225F;
-	border: 2px solid #CC225f;
+	border: 0px solid #CC225f;
 	box-shadow:  1px 1px 2px 1px darkgrey;
 	}
 
@@ -252,7 +253,7 @@ ul .hide{
 	height: 32px; 
 	position: sticky;
 	bottom: 0px;
-	background-color:rgba(244,189,208,0.3); 
+	background-color:rgba(244,189,208,0.8); 
     background: #F4BDD0\9;  
     filter: alpha(opacity=30);
 	overflow:hidden;
