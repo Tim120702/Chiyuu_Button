@@ -6,28 +6,28 @@
 	<link rel="stylesheet" rev="stylesheet" href="style.css" type="text/css" media="all" />
 	<script>
 		var voiceName = new Array("sigh","AhEastEight","Doshite","WTFF","Kugimiya_Combo","Fury","Fxxk","FxxkU"); //for random play
-		var multi = false;
-		var song = false;
-		var eleID = "";
-		var HDActive = false;
-		var countaudio = 0;
+		var multi = false;		//control param for multiple player
+		var song = false;		// control param for song (if true, the route will add sth)
+		var eleID = "";			// store the sounds names
+		var HDActive = false;	//If true, higher qulity song will be play
+		var countaudio = 0;		// count the how many audios was played together and record the maximum
 		
 		function playsound(){
 			var button = document.getElementById(eleID);
 			var audio = document.getElementById("music");
 			var songname = document.getElementById("songName");
 			var audiosrc ;
-			if (HDActive){
-				if(song){audiosrc = "SpiritSound/" +eleID + "_HD.ogg";}
+			if (HDActive){		//Higer qulity song
+				if(song){audiosrc = "SpiritSound/" +eleID + "_HD.ogg";}		
 			}
 			else{
 				audiosrc = "SpiritSound/" +eleID + ".mp3";
 			}
-			if (multi){
+			if (multi){			//multiple sounds play together
 				multiplayer(audiosrc,countaudio);
 				countaudio = countaudio + 1;
 			}
-			else{
+			else{				//simple play the sound
 				audio.src = audiosrc;
 				if(audio.paused){                 
 					audio.play();
@@ -36,7 +36,7 @@
 					audio();
 				} 
 			}
-			songname.innerHTML = "现在播放：" + button.innerHTML;
+			songname.innerHTML = "现在播放：" + button.innerHTML;	//record the sound name now playing
 		}
 		
 		function multiplayer(src, playerNum)
@@ -52,19 +52,19 @@
 			document.body.appendChild(audio)
 		}
 		
-		function voiceControl(butID){
+		function voiceControl(butID){		//play sound clip
 			eleID = butID;
 			song = false;
 			playsound();
 		}
 		
-		function songControl(butID){
+		function songControl(butID){		//play songs
 			eleID = butID;
 			song = true;
 			playsound();
 		}
 		
-		function multiPlayerAct(){
+		function multiPlayerAct(){			//if multiplayer true change the params
 			if (multi){
 				multi = false;
 				eleStateColor("multi","#E8779F");
@@ -75,7 +75,7 @@
 			}
 		}
 		
-		function switchHD(){
+		function switchHD(){				// if HD is true chang reletive params
 			if (HDActive){
 				HDActive = false;
 				eleStateColor("HD","#E8779F");
@@ -86,20 +86,20 @@
 			}
 		}
 		
-		function eleStateColor(ElementID,eleColor){
+		function eleStateColor(ElementID,eleColor){			//if the button was selected change its color
 			var element = document.getElementById(ElementID);
 			element.style.borderColor=eleColor;
 			element.style.backgroundColor=eleColor;
 		}
 		
-		function voiceStop(){
+		function voiceStop(){				//stop all sounds now playing
 			var audio = document.getElementById("music");
 			var songname = document.getElementById("songName");
 			var multiplayer ;
 			var playerID;
 			audio.src="";
 			songname.innerHTML = "";
-			if (multi){
+			if (multi){						//stop multiplaying sounds
 				for(var i = 0;i < countaudio; i++){
 					playerID = "soundplayer" + i;
 					multiplayer = document.getElementById(playerID);
@@ -109,12 +109,12 @@
 			}
 		}
 		
-		function randomVoice(){
+		function randomVoice(){				//randomly play a sound(need to fix)
 			var RandomNumber = Math.floor(Math.random()*8);
 			voiceControl(voiceName[RandomNumber]);
 		}
 		
-		function voiceLoop(){
+		function voiceLoop(){				//if true the sound play will loop
 			var audio = document.getElementById("music");
 			if (audio.loop){
 				audio.removeAttribute("loop");
@@ -126,7 +126,7 @@
 			}
 		}
 		
-		function resetName(){
+		function resetName(){				// when sound playing was stoped reset the sound name now playing
 			var songname = document.getElementById("songName");
 			songname.innerHTML = "";
 		}
@@ -138,7 +138,7 @@
 	
 	<script src = "https://code.jquery.com/jquery-3.3.1.min.js" ></script>
 	<script>
-		var browser = (function BrowserVersion(agent) {
+		var browser = (function BrowserVersion(agent) {		//check browse if IE/Edge shutdown the function 1.Now playing sound name record;2.random play
 			switch (true) {
 				case agent.indexOf("edge") > -1: return "edge";
 				case agent.indexOf("edg") > -1: return "chromium based edge (dev or canary)";
@@ -156,14 +156,14 @@
 				case "ie" : 
 					alert("因IE潜在的兼容性问题，网页部分功能暂停使用");
 					$("#bottomsign").remove();
-					$("#randomplay").remove();
-					$("#readrandom").remove();
+					//$("#randomplay").remove();
+					//$("#readrandom").remove();
 					break;
 				case "edge":
 					alert("因Edge潜在的兼容性问题，网页部分功能暂停使用");
 					$("#bottomsign").remove();
-					$("#randomplay").remove();
-					$("#readrandom").remove();
+					//$("#randomplay").remove();
+					//$("#readrandom").remove();
 					break;
 
 			}
