@@ -5,8 +5,9 @@
 	<meta charset="utf-8">
 	<title>千幽Chiyuu按钮</title>
 	<link rel="stylesheet" rev="stylesheet" href="style.css" type="text/css" media="all" />
+	<script src = "jquery/jquery-3.6.0.js" ></script>
 	<script>
-		var voiceName = new Array("sigh","AhEastEight","Doshite","WTFF","Kugimiya_Combo","Fury","Fxxk","FxxkU"); //for random play
+		var voiceName = new Array(); //for random play
 		var multi = false;		//control param for multiple player
 		var song = false;		// control param for song (if true, the route will add sth)
 		var eleID = "";			// store the sounds names
@@ -111,7 +112,8 @@
 		}
 		
 		function randomVoice(){				//randomly play a sound(need to fix)
-			var RandomNumber = Math.floor(Math.random()*8);
+			var RandomNumber = Math.floor(Math.random()*voiceName.length);
+			console.log(voiceName[RandomNumber]);
 			voiceControl(voiceName[RandomNumber]);
 		}
 		
@@ -132,43 +134,49 @@
 			songname.innerHTML = "";
 		}
 		
+		function getSoundList(){
+			var Num = 0 ;
+			data = $.ajax({
+			url: 'songlist.json',
+			async: false,
+			});	
+			$.each(data.responseJSON,function(idx,obj){
+				voiceName[Num] = obj;
+				Num = Num + 1;
+			});
+		}
+		
+		function disableUncompatableFuctions(broswerName){
+			$("#bottomsign").remove();
+			$("#randomplay").remove();
+			$("#readrandom").remove();		
+			alert("因"+broswerName+"潜在的兼容性问题，网页部分功能暂停使用");
+		}
 		</script>
 	</head>
 
 <body style="background-color:#F9EFF5">
 	
-	<script src = "https://code.jquery.com/jquery-3.3.1.min.js" ></script>
 	<script>
 		var browser = (function BrowserVersion(agent) {		//check browse if IE/Edge shutdown the function 1.Now playing sound name record;2.random play
 			switch (true) {
 				case agent.indexOf("edge") > -1: return "edge";
 				case agent.indexOf("edg") > -1: return "chromium based edge (dev or canary)";
-				case agent.indexOf("opr") > -1 && !!window.opr: return "opera";
-				case agent.indexOf("chrome") > -1 && !!window.chrome: return "chrome";
-				case agent.indexOf("trident") > -1: return "ie";
-				case agent.indexOf("firefox") > -1: return "firefox";
-				case agent.indexOf("safari") > -1: return "safari";
 				case agent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera: return "IE";
 				default: return "other";
 			}
 			})(window.navigator.userAgent.toLowerCase());
-		$(document).ready(function(){	
+		$(document).ready(function(){
 			switch (browser){
 				case "ie" : 
-					alert("因IE潜在的兼容性问题，网页部分功能暂停使用");
-					$("#bottomsign").remove();
-					//$("#randomplay").remove();
-					//$("#readrandom").remove();
+					disableUncompatableFuctions(browser);
 					break;
 				case "edge":
-					alert("因Edge潜在的兼容性问题，网页部分功能暂停使用");
-					$("#bottomsign").remove();
-					//$("#randomplay").remove();
-					//$("#readrandom").remove();
+					disableUncompatableFuctions(browser);
 					break;
-
 			}
-		})
+		});
+		getSoundList();
 		</script>
 	
 	<div>
