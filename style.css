@@ -171,14 +171,6 @@ div .subTitle:hover{
 	opacity: 1;
 	}
 
-
-.copyright{
-	width:100%;
-	height: auto;
-	background-color: #B7B7B7
-}
-
-
 #container{
 	width: 100%;
 	align: center;
@@ -218,12 +210,14 @@ ul .hide{
 
 .footer{
 	position: static;
-	bottom: 0px;}
-.footer div{
-	text-align: left;
-	background-color:aliceblue;
+	bottom: 0px;
+	height: 90px;
+	width:100%; 
+	background-color:#e0e0e0; 
+	background-repeat: no-repeat;
 }
-.footer div ul li{float: left;}
+.footer div{text-align: left;}
+.footer div ul li{}
 
 .navg{
 	float: left;
