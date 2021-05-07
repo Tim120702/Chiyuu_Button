@@ -4,14 +4,14 @@ var updateTime ;		//storage for updatetime
 var voiceNumber ;		//storager 4 number of audios
 var multi = false;		//control param for multiple player
 var song = false;		// control param for song (if true, the route will add sth)
-//var eleID = "";			// store the sounds names
+//var eleID = "";			// store the audios names
 var HDActive = false;	//If true, higher qulity song will be play
 var countaudio = 0;		// count the how many audios was played together and record the maximum
 var loop = false;
 	
-function playsound(eleID){
+function playaudio(eleID){
 	var button = document.getElementById(eleID);
-	var audio = document.getElementById("music");
+	var audioplayer = document.getElementById("music");
 	var songname = document.getElementById("songName");
 	var audiosrc ;
 	if (HDActive){		//Higer qulity song
@@ -20,65 +20,97 @@ function playsound(eleID){
 	else{
 		audiosrc = "SpiritSound/" +eleID + ".mp3";
 	}
-	if (multi){			//multiple sounds play together
-		multiplayer(audiosrc,countaudio,loop);
-		countaudio = countaudio + 1;
+	if (multi){			//multiple audios play together
+		multiplayer(audiosrc);
 	}
-	else{				//simple play the sound
-		audio.src = audiosrc;
+	else{				//simple play the audio
+		audioplayer.src = audiosrc;
 		if(loop){
-			audio.loop;
+			audioplayer.loop;
 		}
 		else{
-			audio.removeAttribute("loop");
+			audioplayer.removeAttribute("loop");
 		}
-		if(audio.paused){                 
-			audio.play();
+		if(audioplayer.paused){                 
+			audioplayer.play();
 		}
 		else{
 			audio();
 		} 
 	}
-	songname.innerHTML = "现在播放：" + button.innerHTML;	//record the sound name now playing
+	songname.innerHTML = "现在播放：" + button.innerHTML;	//record the audio name now playing
 }
-		
-function multiplayer(src, playerNum,loop){
-	var audio = new Audio()
-	audio.id = "soundplayer" + playerNum;
-	audio.controls = true;
-	audio.preload = true;
-	audio.hidden = true;
-	audio.onpause = "resetName()";
-	audio.src = src;
-	if(loop){
-		audio.loop;
+
+function randomVoice(){				//randomly play a audio(need to fix)
+	var RandomNumber = Math.floor(Math.random()*voiceName.length);
+	console.log(voiceName[RandomNumber]);
+	voiceControl(voiceName[RandomNumber]);
+}
+
+function voiceLoop(){				//if true the audio play will loop
+	if (loop){
+		loop = false;
+		eleStateColor("loop","#E8779F");
 	}
 	else{
-		audio.removeAttribute("loop");
-	}
-	audio.play();
-	document.body.appendChild(audio);
+		loop = true;
+		eleStateColor("loop","#CC255F");
+	}		
 }
 		
-function voiceControl(butID){		//play sound clip
+function multiplayer(src){
+	var multiaudioplayer = new Audio()
+	multiaudioplayer.id = "audioplayer" + String(countaudio);
+	multiaudioplayer.controls = true;
+	multiaudioplayer.preload = true;
+	multiaudioplayer.hidden = true;
+	multiaudioplayer.onpause = "resetName()";
+	multiaudioplayer.src = src;
+	if(loop){
+		multiaudioplayer.loop;
+	}
+	else{
+		multiaudioplayer.removeAttribute("loop");
+	}
+	multiaudioplayero.play();
+	countaudio = countaudio + 1;
+	document.body.appendChild(multiaudioplayer);
+}
+
+function voiceStop(){				//stop all audios now playing
+	var defaultAudioplayer = document.getElementById("music");
+	var multiplayer ;
+	var playerID;
+	defaultAudioplayer.removeAttribute("loop");
+	defaultAudioplayer.src="";
+	resetName();
+	console.log(countaudio);
+	if (multi){						//stop multiplaying audios
+		for(var i = 0;i < (countaudio+1); i++){
+			playerID = "audioplayer" + String(i);
+			multiplayer = document.getElementById(playerID);
+			if (document.body.contains(multiplayer)){
+				console.log(playerID + "exist");
+				multiplayer.remove();
+			}
+			else{
+				console.log(playerID+ " not exist")
+			}		
+		}
+	}
+	countaudio = 0;
+	console.log(countaudio);
+}
+
+		
+function voiceControl(butID){		//play audio clip
 	song = false;
-	playsound(butID);
+	playaudio(butID);
 }
 		
 function songControl(butID){		//play songs
 	song = true;
-	playsound(butID);
-}
-
-function multiPlayerAct(){			//if multiplayer true change the params
-	if (multi){
-		multi = false;
-		eleStateColor("multi","#E8779F");
-	}
-	else{
-		multi = true;
-		eleStateColor("multi","#cc225f");
-	}
+	playaudio(butID);
 }
 		
 function switchHD(){				// if HD is true chang reletive params
@@ -92,54 +124,29 @@ function switchHD(){				// if HD is true chang reletive params
 	}
 }
 		
+function resetName(){	// when audio stope reset the audio name showed on the bottom column
+	var songname = document.getElementById("songName");
+	songname.innerHTML = "";
+}
+
+function multiPlayerAct(){			//if multiplay selected change the buttoncolor
+	if (multi){
+		multi = false;
+		eleStateColor("multi","#E8779F");
+	}
+	else{
+		multi = true;
+		eleStateColor("multi","#cc225f");
+	}
+}
+		
 function eleStateColor(ElementID,eleColor){			//if the button was selected change its color
 	var element = document.getElementById(ElementID);
 	element.style.borderColor=eleColor;
 	element.style.backgroundColor=eleColor;
 }
-
-function voiceStop(){				//stop all sounds now playing
-	var audio = document.getElementById("music");
-	var songname = document.getElementById("songName");
-	var multiplayer ;
-	var playerID;
-	audio.removeAttribute("loop");
-	audio.src="";
-	songname.innerHTML = "";
-	if (multi){						//stop multiplaying sounds
-		for(var i = 0;i < (countaudio+10); i++){
-			playerID = "soundplayer" + i;
-			multiplayer = document.getElementById(playerID);
-			multiplayer.src = "";
-			multiplayer.removeAttribute("loop");
-		}
-		countaudio = 0;
-	}
-}
-		
-function randomVoice(){				//randomly play a sound(need to fix)
-	var RandomNumber = Math.floor(Math.random()*voiceName.length);
-	console.log(voiceName[RandomNumber]);
-	voiceControl(voiceName[RandomNumber]);
-}
-
-function voiceLoop(){				//if true the sound play will loop
-	if (loop){
-		loop = false;
-		eleStateColor("loop","#E8779F");
-	}
-	else{
-		loop = true;
-		eleStateColor("loop","#CC255F");
-	}		
-}
-		
-function resetName(){				// when sound playing was stoped reset the sound name now playing
-	var songname = document.getElementById("songName");
-	songname.innerHTML = "";
-}
 	
-function getSoundList(){
+function getAudioList(){
 	var Num = 0 ;
 	data1 = $.ajax({
 		url: 'songlist.json',
@@ -171,7 +178,7 @@ function getUpdateTime(){
 }
 
 function broswercheck(){
-	var browser = (function BrowserVersion(agent) {		//check browse if IE/Edge shutdown the function 1.Now playing sound name record;2.random play
+	var browser = (function BrowserVersion(agent) {		//check browse if IE/Edge shutdown the function 1.Now playing audio name record;2.random play
 		switch (true) {
 			case agent.indexOf("edge") > -1: return "edge";
 			case agent.indexOf("edg") > -1: return "chromium based edge (dev or canary)";
