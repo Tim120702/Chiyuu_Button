@@ -18,20 +18,27 @@ def getAllDirQueue_List(path):
     while len(queue) != 0:
         dirpath = queue.popleft()
         filelist = os.listdir(dirpath)
-        with open("E:\Github\Chiyuu_Button\songlist.json", 'a') as json_obj1:
-            for listname in filelist:
+        for listname in filelist:
+            if(os.path.splitext(listname)[1] == ".mp3"):
                 filename[Num] = os.path.splitext(listname)[0]
-                if(os.path.splitext(listname)[1] == ".mp3"):
-                    Num = Num + 1
-            json.dump(filename, json_obj1)
-        with open("E:\Github\Chiyuu_Button\songnumber.json", 'a') as json_obj2:
-            json.dump(len(filename),json_obj2)
-    #print("输出文件名数量：" + str(len(filename)))
-    return "输出文件名数量：" + str(len(filename))
+                Num = Num + 1
+    audioNum = len(filename)
+    json.dump(filename, open("E:\Github\Chiyuu_Button\songlist.json",'a'))
 
-def getGiuhubInformation(url):
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.67 Safari/537.36 Edg/87.0.664.47'}
-    data = requests.get(url, headers=headers)
-    print(data)
+    Num = 0
+    filename = {}
+    path = "E:\Github\Chiyuu_Button\SpiritSound\幽歌"
+    queue.append(path)
+    while len(queue) != 0:
+        dirpath = queue.popleft()
+        filelist = os.listdir(dirpath)
+        for listname in filelist:
+            if (os.path.splitext(listname)[1] == ".mp3"):
+                filename[Num] = os.path.splitext(listname)[0]
+                Num = Num + 1
+    songNum = len(filename)
+    json.dump(str(songNum) + "+" + str(audioNum), open("E:\Github\Chiyuu_Button\songnumber.json",'a'))
+    #print("输出文件名数量：" + str(len(filename)))
+    return "输出文件名数量：" + str(songNum) + " + " + str(audioNum)
 
 print(getAllDirQueue_List("E:\Github\Chiyuu_Button\SpiritSound"))

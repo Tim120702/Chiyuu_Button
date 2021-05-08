@@ -164,20 +164,25 @@ function getAudioList(){
 }
 		
 function getUpdateTime(){
+	var date;
+	var time;
 	data = $.ajax({
 		type:'GET',
 		url: 'https://api.github.com/repos/Tim120702/Chiyuu_Button',
 		async: false,
 	});
 	$.each(data.responseJSON,function(key,obj){
-		if(key == "updated_at")
-			time4update = obj.split('T')[0]+" "+obj.split('T')[1].replace("Z","");
+		if(key == "updated_at"){
+			date = obj.split('T')[0];
+			time = obj.split('T')[1].replace("Z","");
+		}	
 	});
-	console.log(time4update);
+	var update = new Date(date.split('-')[0],date.split('-')[1]-1,date.split('-')[2],Number(time.split(':')[0])+8,time.split(':')[1],time.split(':')[2]);
+	time4update = update.toISOString().split('T')[0] + " " + update.toTimeString().replace(/\s*/g,"").replace("GMT+0800(中国标准时间)","");
 	return time4update;
 }
 
-function broswercheck(){
+function broswercheck(){	
 	var browser = (function BrowserVersion(agent) {		//check browse if IE/Edge shutdown the function 1.Now playing audio name record;2.random play
 		switch (true) {
 			case agent.indexOf("edge") > -1: return "edge";
@@ -207,7 +212,7 @@ function disableUncompatableFuctions(broswerName){
 
 function datainitial(){
 	var updateTime = getUpdateTime()
-	var updateinfo = "当前音声量:" + String(voiceNumber) + "(更新于" + String(updateTime) +")";
+	var updateinfo = "当前音声量:" + String(voiceNumber).replace(/\"/g, "") + "(更新于" + String(updateTime) +")";
 	console.log(updateinfo);
 	$(document).ready(function(){document.getElementById("updateinfo").innerText = updateinfo;});
 }
