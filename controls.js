@@ -43,7 +43,7 @@ function playaudio(eleID){
 
 function randomVoice(){				//randomly play a audio(need to fix)
 	var RandomNumber = Math.floor(Math.random()*voiceName.length);
-	console.log(voiceName[RandomNumber]);
+	//console.log(voiceName[RandomNumber]);
 	voiceControl(voiceName[RandomNumber]);
 }
 
@@ -72,7 +72,7 @@ function multiplayer(src){
 	else{
 		multiaudioplayer.removeAttribute("loop");
 	}
-	multiaudioplayero.play();
+	multiaudioplayer.play();
 	countaudio = countaudio + 1;
 	document.body.appendChild(multiaudioplayer);
 }
@@ -84,22 +84,22 @@ function voiceStop(){				//stop all audios now playing
 	defaultAudioplayer.removeAttribute("loop");
 	defaultAudioplayer.src="";
 	resetName();
-	console.log(countaudio);
+	//console.log(countaudio);
 	if (multi){						//stop multiplaying audios
 		for(var i = 0;i < (countaudio+1); i++){
 			playerID = "audioplayer" + String(i);
 			multiplayer = document.getElementById(playerID);
 			if (document.body.contains(multiplayer)){
-				console.log(playerID + "exist");
+				//console.log(playerID + "exist");
 				multiplayer.remove();
 			}
 			else{
-				console.log(playerID+ " not exist")
+				//console.log(playerID+ " not exist")
 			}		
 		}
 	}
 	countaudio = 0;
-	console.log(countaudio);
+	//console.log(countaudio);
 }
 
 		
@@ -156,6 +156,7 @@ function getAudioList(){
 		voiceName[Num] = obj;
 		Num = Num + 1;
 	});
+	//console.log(voiceName);
 	data2 = $.ajax({
 		url: 'songnumber.json',
 		async: false,
