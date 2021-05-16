@@ -208,7 +208,7 @@ function disableUncompatableFuctions(broswerName){
 	$("#bottomsign").remove();
 	$("#randomplay").remove();
 	$("#readrandom").remove();		
-	alert("因"+broswerName+"潜在的兼容性问题，网页部分功能暂停使用");
+	alert("因"+broswerName+"潜在的兼容性问题，网页部分功能暂停使用 ，建议使用chrome或firefox打开本网站");
 }
 
 function datainitial(){
