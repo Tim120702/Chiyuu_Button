@@ -43,7 +43,7 @@ function playaudio(eleID){
 
 function randomVoice(){				//randomly play a audio(need to fix)
 	var RandomNumber = Math.floor(Math.random()*voiceName.length);
-	//console.log(voiceName[RandomNumber]);
+	console.log(voiceName[RandomNumber]);
 	voiceControl(voiceName[RandomNumber]);
 }
 
@@ -149,7 +149,7 @@ function eleStateColor(ElementID,eleColor){			//if the button was selected chang
 function getAudioList(){
 	var Num = 0 ;
 	data1 = $.ajax({
-		url: 'audiolist.json',
+		url: '\json\information\audiolist.json',
 		async: false,
 	});	
 	$.each(data1.responseJSON,function(idx,obj){
@@ -158,7 +158,7 @@ function getAudioList(){
 	});
 	//console.log(voiceName);
 	data2 = $.ajax({
-		url: 'songnumber.json',
+		url: '\json\information\songnumber.json',
 		async: false,
 	});	
 		voiceNumber = data2.responseText;
