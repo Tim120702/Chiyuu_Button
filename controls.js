@@ -149,7 +149,7 @@ function eleStateColor(ElementID,eleColor){			//if the button was selected chang
 function getAudioList(){
 	var Num = 0 ;
 	data1 = $.ajax({
-		url: 'songlist.json',
+		url: 'audiolist.json',
 		async: false,
 	});	
 	$.each(data1.responseJSON,function(idx,obj){
