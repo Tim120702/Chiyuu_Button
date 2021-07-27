@@ -149,7 +149,7 @@ function eleStateColor(ElementID,eleColor){			//if the button was selected chang
 function getAudioList(){
 	var Num = 0 ;
 	data1 = $.ajax({
-		url: 'json/information/audiolist.json',
+		url: 'https://cdn.jsdelivr.net/gh/Tim120702/Chiyuu_Button/json/information/audiolist.json',
 		async: false,
 	});	
 	$.each(data1.responseJSON,function(idx,obj){
@@ -158,7 +158,7 @@ function getAudioList(){
 	});
 	//console.log(voiceName);
 	data2 = $.ajax({
-		url: 'json/information/songnumber.json',
+		url: 'https://cdn.jsdelivr.net/gh/Tim120702/Chiyuu_Button/json/information/songnumber.json',
 		async: false,
 	});	
 		voiceNumber = data2.responseText;
