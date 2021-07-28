@@ -5,10 +5,13 @@ import requests;
 
 dataNeeded = {}
 def getAllDirQueue_List(path):
-    file = open("E:\Github\Chiyuu_Button\json\information\songlist.json",'w')
+    file = open("E:\Github\Chiyuu_Button\json\information\\audiolist.json",'w')
     file.write('')
     file.close()
     file = open("E:\Github\Chiyuu_Button\json\information\songnumber.json",'w')
+    file.write('')
+    file.close()
+    file = open("E:\Github\Chiyuu_Button\json\information\songlist.json", 'w')
     file.write('')
     file.close()
     queue = collections.deque()
@@ -23,7 +26,7 @@ def getAllDirQueue_List(path):
                 filename[Num] = os.path.splitext(listname)[0]
                 Num = Num + 1
     audioNum = len(filename)
-    json.dump(filename, open("E:\Github\Chiyuu_Button\json\information\audiolist.json",'a'))
+    json.dump(filename, open("E:\Github\Chiyuu_Button\json\information\\audiolist.json",'a'))
 
     Num = 0
     filename = {}
@@ -37,6 +40,7 @@ def getAllDirQueue_List(path):
                 filename[Num] = os.path.splitext(listname)[0]
                 Num = Num + 1
     songNum = len(filename)
+    print(filename)
     json.dump(filename, open("E:\Github\Chiyuu_Button\json\information\songlist.json",'a'))
     json.dump(str(songNum) + "+" + str(audioNum), open("E:\Github\Chiyuu_Button\json\information\songnumber.json",'a'))
     #print("输出文件名数量：" + str(len(filename)))
