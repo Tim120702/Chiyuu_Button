@@ -16,3 +16,4 @@ build/songlist/warn-songlist.txt
 build/songlist/songlist.exe.manifest
 build/songlist/PYZ-00.toc
 build/songlist/PYZ-00.pyz
+test.py
