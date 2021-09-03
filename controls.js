@@ -8,6 +8,7 @@ var song = false;		// control param for song (if true, the route will add sth)
 var HDActive = false;	//If true, higher qulity song will be play
 var countaudio = 0;		// count the how many audios was played together and record the maximum
 var loop = false;
+var multiPlaying = false;
 	
 function playaudio(eleID){
 	var button = document.getElementById(eleID);
@@ -26,7 +27,7 @@ function playaudio(eleID){
 	else{				//simple play the audio
 		audioplayer.src = audiosrc;
 		if(loop){
-			audioplayer.loop;
+			audioplayer.loop = "true"; 
 		}
 		else{
 			audioplayer.removeAttribute("loop");
@@ -67,12 +68,13 @@ function multiplayer(src){
 	multiaudioplayer.onpause = "resetName()";
 	multiaudioplayer.src = src;
 	if(loop){
-		multiaudioplayer.loop;
+		multiaudioplayer.loop = "true";
 	}
 	else{
 		multiaudioplayer.removeAttribute("loop");
 	}
 	multiaudioplayer.play();
+	multiPlaying = true;
 	countaudio = countaudio + 1;
 	document.body.appendChild(multiaudioplayer);
 }
@@ -85,7 +87,7 @@ function voiceStop(){				//stop all audios now playing
 	defaultAudioplayer.src="";
 	resetName();
 	//console.log(countaudio);
-	if (multi){						//stop multiplaying audios
+	if (multiPlaying){						//stop multiplaying audios
 		for(var i = 0;i < (countaudio+1); i++){
 			playerID = "audioplayer" + String(i);
 			multiplayer = document.getElementById(playerID);
@@ -97,6 +99,7 @@ function voiceStop(){				//stop all audios now playing
 				//console.log(playerID+ " not exist")
 			}		
 		}
+		multiPlaying = false;
 	}
 	countaudio = 0;
 	//console.log(countaudio);
